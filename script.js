@@ -1,3 +1,9 @@
+//select dom elements
+const counterEL = document.getElementById("counter");
+const incrementEL = document.getElementById("increment");
+const decrementEL = document.getElementById("decrement");
+
+
 // initial state 
 const initialState = {
     value: 0,
@@ -21,3 +27,25 @@ function counterReducer(state = initialState, action) {
         return state;
     }
 }
+
+//crete store
+const store = Redux.createStore(counterReducer);
+const render = () => {
+    const state = store.getState();
+    counterEL.innerText = state.value.toString();
+};
+store.subscribe(render);
+
+
+//button click listerners
+incrementEL.addEventListener('click', () => {
+    store.dispatch({
+        type: 'increment',
+    });
+});
+
+decrementEL.addEventListener('click', () => {
+    store.dispatch({
+        type: 'decrement',
+    });
+});
