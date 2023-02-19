@@ -4,16 +4,16 @@ const incrementEL = document.getElementById("increment");
 const decrementEL = document.getElementById("decrement");
 
 //action creators
-const increment = () => {
+const increment = (value) => {
     return {
         type: INCREMENT,
-        payload: 5,
+        payload: value,
     };
 }
-const decrement = () => {
+const decrement = (value) => {
     return {
         type: DECREMENT,
-        payload: 2,
+        payload: value,
     };
 }
 
@@ -62,15 +62,9 @@ store.subscribe(render);
 
 //button click listerners
 incrementEL.addEventListener('click', () => {
-    store.dispatch({
-        type: INCREMENT,
-        payload: 5,
-    });
+    store.dispatch(increment(5));
 });
 
 decrementEL.addEventListener('click', () => {
-    store.dispatch({
-        type: DECREMENT,
-        payload: 2,
-    });
+    store.dispatch(decrement(2));
 });
