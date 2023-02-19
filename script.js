@@ -34,6 +34,10 @@ const render = () => {
     const state = store.getState();
     counterEL.innerText = state.value.toString();
 };
+
+//update uI initiallly
+render();
+
 store.subscribe(render);
 
 
